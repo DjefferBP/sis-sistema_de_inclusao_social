@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { TodoAPI, type ITodo } from "../shared/services/api/TodoApi";
-import { InputAdd } from "../components/InputAdd";
-import { Todo } from "../components/Todo";
+import { InputAdd } from "../components/Input/InputAdd";
+import { Todo } from "../components/Todo/Todo";
 
 
 

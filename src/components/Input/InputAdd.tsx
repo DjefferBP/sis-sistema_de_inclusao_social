@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import './InputAdd.css'
 
 interface InputAddProps {
     onAdd(value: string): void;
@@ -14,18 +16,18 @@ export const InputAdd = (props: InputAddProps) => {
     }
 
     return (
-        <div>
-            <input
+        <div className="input-add-container">
+            <TextField
+                id="filled-basic"
+                label="Digite uma tarefa"
+                variant="outlined"
                 value={value}
                 onChange={e => setValue(e.target.value)}
-                placeholder="Digite uma tarefa"
             />
-            <Button variant="contained"
-                onClick={handleAdd}
-                
-            >
+            <Button variant="contained" onClick={handleAdd}>
                 Adicionar
             </Button>
         </div>
+
     );
 }
