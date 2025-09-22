@@ -1,29 +1,37 @@
 import { useState } from "react";
 import { InputAdd } from "./components/InputAdd";
 import { Todo } from "./components/Todo";
-import { TodoAPI } from "./shared/services/api/TodoApi";
+import { useEffect } from "react";
+import { TodoAPI} from "./shared/services/api/TodoApi";
+import type { ITodo  } from "./shared/services/api/TodoApi";
 
 export function App() {
-  const [list, setList] = useState([
-    { id: 1, label: 'Item 1', complete: false },
-    { id: 2, label: 'Item 2', complete: false },
-    { id: 3, label: 'Item 3', complete: false },
-    { id: 4, label: 'Item 4', complete: false },
-  ]);
+  const [list, setList] = useState<ITodo[]>([]);
 
-  const handleAdd = (value: string) => {
-    setList([
-      ...list,
-      { id: list.length + 1, complete: false, label: value }
-    ])
+  useEffect(() => {
+    async function fetchData() {
+      const todos = await TodoAPI.getAll();
+      setList(todos);
+    }
+    
+    fetchData();
+  }, []);
+
+  async function handleAdd(value: string) {
+    const newTodo = await TodoAPI.create({ label: value, complete: false })
+
+    setList([...list, newTodo]) 
   }
-
-  const handleComplete = (id: number) => {
-    setList(list.map(item => item.id === id ? { ...item, complete: true } : item))
+  
+  async function handleComplete(id: number) {
+    await TodoAPI.updateById(id, {complete: true})
+    setList(list.map(item => item.id === id ? { ...item, complete: true } : item));
   }
-
-  const handleRemove = (id: number) => {
-    setList(list.filter(item => item.id !== id))
+  // setList(list.map(item => item.id === id ? { ...item, complete: true } : item))
+  
+  async function handleRemove(id: number){
+    TodoAPI.deleteById(id)
+    setList(list.filter(item => item.id !== id));
   }
 
   return (
@@ -49,23 +57,3 @@ export function App() {
     </div>
   );
 }
-
-/*
-<li key={listItem.id}>
-            {listItem.label}
-
-            <Button variant="contained" onClick={() => {
-              setList([
-              ...list.map(item => ({
-                 ...item, complete: item.id === id ? true : item.complete}))
-              ])
-            }}
-            >
-              Concluir
-            </Button>
-            <Button variant="outlined" color="error" onClick={() => setList([...list.filter(item => item.id !== listItem.id)])}>
-              Remover
-            </Button>
-          </li>
-
-*/

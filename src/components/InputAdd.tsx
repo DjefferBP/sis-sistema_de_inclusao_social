@@ -22,6 +22,7 @@ export const InputAdd = (props: InputAddProps) => {
             />
             <Button variant="contained"
                 onClick={handleAdd}
+                
             >
                 Adicionar
             </Button>
