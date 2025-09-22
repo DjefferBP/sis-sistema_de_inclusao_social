@@ -1,59 +1,11 @@
-import { useState } from "react";
-import { InputAdd } from "./components/InputAdd";
-import { Todo } from "./components/Todo";
-import { useEffect } from "react";
-import { TodoAPI} from "./shared/services/api/TodoApi";
-import type { ITodo  } from "./shared/services/api/TodoApi";
+import { Home } from "./pages/Home";
+import { AppLayout } from "./shared/layout/AppLayout";
 
 export function App() {
-  const [list, setList] = useState<ITodo[]>([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const todos = await TodoAPI.getAll();
-      setList(todos);
-    }
-    
-    fetchData();
-  }, []);
-
-  async function handleAdd(value: string) {
-    const newTodo = await TodoAPI.create({ label: value, complete: false })
-
-    setList([...list, newTodo]) 
-  }
-  
-  async function handleComplete(id: number) {
-    await TodoAPI.updateById(id, {complete: true})
-    setList(list.map(item => item.id === id ? { ...item, complete: true } : item));
-  }
-  // setList(list.map(item => item.id === id ? { ...item, complete: true } : item))
-  
-  async function handleRemove(id: number){
-    TodoAPI.deleteById(id)
-    setList(list.filter(item => item.id !== id));
-  }
 
   return (
-    <div>
-      <InputAdd
-        onAdd={handleAdd}
-      />
-
-
-
-      <ol>
-        {list.map(listItem => (
-          <Todo
-            key={listItem.id}
-            id={listItem.id}
-            label={listItem.label}
-            complete={listItem.complete}
-            onComplete={() => handleComplete(listItem.id)}
-            onRemove={() => handleRemove(listItem.id)}
-          />
-        ))}
-      </ol>
-    </div>
+    <AppLayout>
+      <Home />
+    </AppLayout> 
   );
 }
