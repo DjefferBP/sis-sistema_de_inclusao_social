@@ -2,16 +2,21 @@
 import './AppLayout.css'
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { NavLink } from 'react-router';
 
 export default function TextButtons() {
   return (
     <Stack direction="row" spacing={2} className='home-buttons'>
-      <Button variant="contained" href="#">
-        Página inicial
-      </Button>
-      <Button variant="contained" href="#">
-        Usuários
-      </Button>
+      <NavLink to='/'>
+        <Button variant="contained" >
+          Página inicial
+        </Button>
+      </NavLink>
+      <NavLink to='/sobre'>
+        <Button variant="contained" >
+          Sobre
+        </Button>
+      </NavLink>
     </Stack>
   );
 }
