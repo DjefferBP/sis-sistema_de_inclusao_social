@@ -2,13 +2,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { InitialMenuButtom } from '../../../components/InitialPageMenu';
-import { Link } from 'react-router';
+import { InitialMenuButtom } from './InitialPageMenu';
+import { NavLink } from 'react-router';
 import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import InfoIcon from '@mui/icons-material/Info';
+
 import { Stack, useMediaQuery, useTheme } from '@mui/material';
 import './HeaderLayout.css'
+import { About } from './AboutButton';
 
 export default function HeaderLayout() {
   const theme = useTheme();
@@ -16,7 +17,7 @@ export default function HeaderLayout() {
 
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
-      <AppBar position="static" sx={{ backgroundColor: '#4d6dae' }}>
+      <AppBar sx={{ backgroundColor: '#4d6dae' }}>
         <Toolbar sx={{ 
           flexWrap: { xs: 'wrap', md: 'nowrap' },
           justifyContent: 'space-between',
@@ -24,7 +25,7 @@ export default function HeaderLayout() {
         }}>
           <Stack direction="row" alignItems="center" sx={{ flexShrink: 0 }}>
             <InitialMenuButtom />
-            <Link to='/'>
+            <NavLink to='/'>
               <Stack direction="row" alignItems="center">
                 <img 
                   src="../../../public/SIS-personagemlaranjalogo.ico" 
@@ -44,7 +45,7 @@ export default function HeaderLayout() {
                   }}
                 />
               </Stack>
-            </Link>
+            </NavLink>
           </Stack>
 
           <Stack 
@@ -56,16 +57,7 @@ export default function HeaderLayout() {
               gap: { xs: 1, md: 2 }
             }}
           >
-            <Link to='/sobre'>
-              <Button 
-                className='initial-buttons' 
-                size={isMobile ? 'medium' : 'large'}
-                startIcon={<InfoIcon />}
-                sx={{ minWidth: 'auto' }}
-              >
-                {isMobile ? 'Sobre' : 'Sobre nós'}
-              </Button>
-            </Link>
+            <About />
           </Stack>
 
           <Stack 

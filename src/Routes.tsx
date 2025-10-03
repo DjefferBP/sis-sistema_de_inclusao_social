@@ -5,7 +5,6 @@ import { InitialPage } from "./pages/InitialPage";
 
 
 
-
 export const AppRoutes = () => {
     const isAuthenticated = false
 
@@ -28,7 +27,8 @@ export const AppRoutes = () => {
             {
                 !isAuthenticated && (
                     <Routes>
-                        <Route path="*" element={<InitialPage />} />
+                        <Route path="/" element={<InitialPage />} />
+                        <Route path="*" element={<Navigate to='/' />} />
                     </Routes>
                 )
             }
