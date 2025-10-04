@@ -6,6 +6,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { blue } from "@mui/material/colors";
 
 const style = {
   position: "absolute" as const,
@@ -20,7 +21,6 @@ const style = {
   pb: 3,
 };
 
-// Extende HTMLElement para aceitar _leaflet_id
 interface LeafletHTMLElement extends HTMLElement {
   _leaflet_id?: number;
 }
@@ -44,7 +44,7 @@ export const About: React.FC = () => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    L.marker([-23.561684, -46.625378])
+    L.marker([-23.412039646605614, -51.93558833108404])
       .addTo(map)
       .bindPopup("Colégio Dr Gastão Vidigal")
       .openPopup();
@@ -52,7 +52,6 @@ export const About: React.FC = () => {
 
   useEffect(() => {
     if (open) {
-      // Aguarda o modal montar o DOM antes de inicializar
       setTimeout(initMap, 0);
     }
   }, [open]);
@@ -61,6 +60,7 @@ export const About: React.FC = () => {
     <div>
       <Button
         startIcon={<InfoIcon />}
+        sx={{color: "white", ":before" : {color: blue}}}
         size={isMobile ? "medium" : "large"}
         onClick={handleOpen}
       >

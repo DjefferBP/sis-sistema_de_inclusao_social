@@ -6,14 +6,16 @@ import { InitialMenuButtom } from './InitialPageMenu';
 import { NavLink } from 'react-router';
 import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-
+import { useState } from 'react';
 import { Stack, useMediaQuery, useTheme } from '@mui/material';
 import './HeaderLayout.css'
 import { About } from './AboutButton';
+import { AuthModal } from './AuthUser';
 
 export default function HeaderLayout() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
@@ -69,11 +71,13 @@ export default function HeaderLayout() {
             }}
           >
             <Button 
+              
               className='initial-buttons' 
               variant='outlined' 
               size={isMobile ? 'medium' : 'large'}
               startIcon={<AssignmentIndIcon />}
               sx={{ minWidth: 'auto' }}
+              onClick={() => setModalOpen(true)}
             >
               {isMobile ? 'Cadastrar' : 'Cadastrar-se'}
             </Button>
@@ -82,12 +86,14 @@ export default function HeaderLayout() {
               size={isMobile ? 'medium' : 'large'}
               startIcon={<LoginIcon />}
               sx={{ minWidth: 'auto' }}
+              onClick={() => setModalOpen(true)}
             >
               Login
             </Button>
           </Stack>
         </Toolbar>
       </AppBar>
+      <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </Box>
   );
 }
