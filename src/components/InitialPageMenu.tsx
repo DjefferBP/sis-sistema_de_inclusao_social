@@ -2,9 +2,8 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { Authenticate } from '../Routes';
 
 export const InitialMenuButtom = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -16,6 +15,10 @@ export const InitialMenuButtom = () => {
         setAnchorEl(null);
     };
 
+    const handleAuth = () => {
+        Authenticate ? console.log('legal') : console.log('eae')
+    }
+
     return (
         <div>
             <Button
@@ -25,15 +28,10 @@ export const InitialMenuButtom = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <IconButton
-                    size="large"
-                    edge="start"
-                    
-                    aria-label="menu"
-                    sx={{ mr: 2, color: 'white' }}
-                >
-                    <MenuIcon />
-                </IconButton>
+                <MenuIcon 
+                    sx={{color: 'white', mr: 3}}
+                />
+                
             </Button>
             <Menu
                 id="basic-menu"
@@ -46,7 +44,7 @@ export const InitialMenuButtom = () => {
                     },
                 }}
             >
-                <MenuItem onClick={handleClose}>Minha conta</MenuItem>
+                <MenuItem onClick={ handleAuth }>Minha conta</MenuItem>
                 <MenuItem onClick={handleClose}>Sair</MenuItem>
             </Menu>
         </div>
