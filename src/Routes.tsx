@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router";
 import { InitialPage } from "./pages/InitialPage";
+import { useIsAuthenticated } from './shared/contexts/AuthContext';
 
 
 
 
 
 export const AppRoutes = () => {
-    const isAuthenticated = false
+    const isAuthenticated = useIsAuthenticated()
 
 
     return (

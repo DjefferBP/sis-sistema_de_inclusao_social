@@ -3,7 +3,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Authenticate } from '../Routes';
 
 export const InitialMenuButtom = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -15,9 +14,6 @@ export const InitialMenuButtom = () => {
         setAnchorEl(null);
     };
 
-    const handleAuth = () => {
-        Authenticate ? console.log('legal') : console.log('eae')
-    }
 
     return (
         <div>
@@ -44,7 +40,7 @@ export const InitialMenuButtom = () => {
                     },
                 }}
             >
-                <MenuItem onClick={ handleAuth }>Minha conta</MenuItem>
+                <MenuItem onClick={handleClose}>Minha conta</MenuItem>
                 <MenuItem onClick={handleClose}>Sair</MenuItem>
             </Menu>
         </div>

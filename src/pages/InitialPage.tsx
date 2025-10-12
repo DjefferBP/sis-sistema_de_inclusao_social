@@ -1,7 +1,7 @@
 import { Outlet } from "react-router"
 import HeaderLayout from "../components/HeaderLayout"
-
-
+import LandingPage from "../components/LandingPage"
+import Footer from "../components/Footer"
 
 
 
@@ -15,6 +15,11 @@ export const InitialPage = () => {
             </div>
             <div className="initial-content">
                 <Outlet />
+                <LandingPage/>
+                
+            </div>
+            <div className="initial-footer">
+                <Footer />
             </div>
         </div>
     )
