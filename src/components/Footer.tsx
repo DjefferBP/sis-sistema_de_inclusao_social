@@ -1,7 +1,7 @@
 import "./Footer.css";
 
 const Footer = () => (
-  <footer className="main_footer container">
+  <footer className="main_footer container" style= {{ width: '100vw' }}>
     
     <div className="content">
         <div className="colfooter">

@@ -6,6 +6,7 @@ import Wheelchair from '../../public/Wheelchair.jpg';
 import DownSyndromeFamily from '../../public/DownSyndromeFamily.jpeg';
 import SisTxtNoSlogan from '../../public/SisTxtNoSlogan.png';
 import { AuthModal } from './AuthUser';
+import { flex } from '@mui/system';
 const carouselImages = [
     BlackBusinesswoman2,
     Wheelchair,
@@ -48,31 +49,21 @@ const LandingPage = () => {
                 fontFamily: 'sans-serif',
                 padding: isMobile ? '1rem' : '2rem',
                 background: '#f5f6fa',
-                marginTop: isMobile ? '12vh' : '8vh',
-                marginLeft: isMobile ? 0 : '-10vw',
+                marginTop: isMobile ? '12vh' : '11vh',
                 minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100vw'
             }}
         >
-            <img
-                src={SisTxtNoSlogan}
-                alt="SisTxtNoSlogan"
-                style={{
-                    maxWidth: isMobile ? '60vw' : '15vw',
-                    height: 'auto',
-                    margin: isMobile ? '0 auto 1rem auto' : '0 auto',
-                    display: 'block'
-                }}
-            />
-            <hr style={{ maxWidth: isMobile ? '90vw' : '40vw' }}></hr>
             <div
                 className="bio"
                 style={{
                     maxWidth: isMobile ? '95vw' : '40vw',
-                    margin: '0 auto',
-                    padding: isMobile ? '1rem' : '2rem',
+                    padding: isMobile ? '1rem' : '4rem',
                     background: 'white',
                     borderRadius: '8px',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
                 }}
             >
                 <h1
@@ -166,7 +157,7 @@ const LandingPage = () => {
             </div>
             <AuthModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </div>
-        
+
     );
 };
 
