@@ -13,7 +13,7 @@ const carouselImages = [
     DownSyndromeFamily,
 ];
 
-const CAROUSEL_HEIGHT_DESKTOP = 40; // em
+const CAROUSEL_HEIGHT_DESKTOP = 80; // em
 const CAROUSEL_HEIGHT_MOBILE = 18; // em
 
 const useIsMobile = () => {
@@ -49,7 +49,7 @@ const LandingPage = () => {
                 fontFamily: 'sans-serif',
                 padding: isMobile ? '1rem' : '2rem',
                 background: '#f5f6fa',
-                marginTop: isMobile ? '12vh' : '11vh',
+                margin: '0 auto',
                 minHeight: '100vh',
                 display: 'flex',
                 flexDirection: 'column',
@@ -60,7 +60,8 @@ const LandingPage = () => {
                 className="bio"
                 style={{
                     maxWidth: isMobile ? '95vw' : '40vw',
-                    padding: isMobile ? '1rem' : '4rem',
+                    padding: isMobile ? '1rem' : '4vw',
+                    marginTop: isMobile ? '5rem': '10vh',
                     background: 'white',
                     borderRadius: '8px',
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
@@ -118,9 +119,9 @@ const LandingPage = () => {
                 style={{
                     position: isMobile ? 'static' : 'absolute',
                     right: isMobile ? undefined : '8vw',
-                    top: isMobile ? undefined : '15vh',
+                    top: isMobile ? undefined : '13vh',
                     margin: isMobile ? '2rem auto 0 auto' : undefined,
-                    height: `${CAROUSEL_HEIGHT}em`,
+                    height: `${CAROUSEL_HEIGHT}vh`,
                     width: isMobile ? '90vw' : '30vw',
                     maxWidth: isMobile ? '400px' : undefined,
                     overflow: 'hidden',
@@ -136,7 +137,7 @@ const LandingPage = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        transform: `translateY(-${offset * CAROUSEL_HEIGHT}em)`,
+                        transform: `translateY(-${offset * CAROUSEL_HEIGHT}vh)`,
                         transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)'
                     }}
                 >
@@ -148,7 +149,7 @@ const LandingPage = () => {
                             style={{
                                 width: isMobile ? '90vw' : '30vw',
                                 maxWidth: isMobile ? '400px' : undefined,
-                                height: `${CAROUSEL_HEIGHT}em`,
+                                height: `${CAROUSEL_HEIGHT}vh`,
                                 objectFit: 'cover'
                             }}
                         />

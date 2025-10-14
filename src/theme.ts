@@ -6,7 +6,6 @@ const theme = createTheme({
         h1: { fontFamily: 'serif' },
         h2: { fontFamily: 'serif' },
     }
-
 });
 
 export default theme;
