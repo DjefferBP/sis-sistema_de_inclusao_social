@@ -3,6 +3,7 @@ import HeaderLayout from "../components/HeaderLayout"
 import LandingPage from "../components/LandingPage"
 import Footer from "../components/Footer"
 import AboutCards from "../components/AboutCards"
+import { ReadySession } from "../components/ReadySession"
 
 
 
@@ -18,6 +19,7 @@ export const InitialPage = () => {
                 <Outlet />
                 <LandingPage/>
                 <AboutCards/>
+                <ReadySession/>
             </div>
             <div className="initial-footer">
                 <Footer />

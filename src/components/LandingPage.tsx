@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import BlackBusinesswoman2 from '../../public/BlackBusinesswoman2.jpg';
 import Wheelchair from '../../public/Wheelchair.jpg';
 import DownSyndromeFamily from '../../public/DownSyndromeFamily.jpeg';
-import SisTxtNoSlogan from '../../public/SisTxtNoSlogan.png';
 import { AuthModal } from './AuthUser';
-import { flex } from '@mui/system';
 const carouselImages = [
     BlackBusinesswoman2,
     Wheelchair,
@@ -111,7 +109,7 @@ const LandingPage = () => {
                         fontSize: isMobile ? '1.1rem' : '20px'
                     }}
                 >
-                    Estamos aqui para ajudar você a se integrar e ter acesso aos serviços sociais disponíveis. Como direitos e cotas disponíveis.
+                    Estamos aqui para ajudar você a se integrar e ter acesso aos serviços sociais disponíveis.
                 </p>
             </div>
 
